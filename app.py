@@ -9,20 +9,28 @@ st.title("3D Particle Structure Generator")
 
 st.sidebar.header("Controls")
 n_particles = st.sidebar.number_input("Number of particles", min_value=10, max_value=200, value=50)
-latent_dim = st.sidebar.number_input("Latent dimension", min_value=2, max_value=64, value=16)
+use_improved = st.sidebar.checkbox("Use Improved Model (Sorted data, Beta-VAE)", value=True)
+
+latent_dim = st.sidebar.number_input("Latent dimension", min_value=2, max_value=64, value=32 if use_improved else 16)
 compare = st.sidebar.checkbox("Compare with training distribution")
 
 if st.sidebar.button("Generate Structure"):
     input_dim = n_particles * 3
-    hidden_dim = 128
+    
+    if use_improved:
+        hidden_dim = 256
+        model_path = "model_improved.pth"
+    else:
+        hidden_dim = 128
+        model_path = "model.pth"
     
     # load trained model
     model = VAE(input_dim, hidden_dim, latent_dim)
     try:
-        model.load_state_dict(torch.load("model.pth"))
+        model.load_state_dict(torch.load(model_path, weights_only=True))
         model.eval()
     except:
-        st.warning("model.pth not found. Please train the model first.")
+        st.warning(f"{model_path} not found. Please train the model first.")
         st.stop()
         
     # sample latent vector

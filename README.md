@@ -10,7 +10,13 @@ Generates synthetic 3D particle configurations inside a unit cube, trains a simp
 - Includes an interactive [Jupyter Notebook](explore.ipynb) connected to the project's venv for exploration
 
 ## Screenshots
+
+### Baseline VAE
 ![Demo Plot](demo_plot.png)
+
+### Improved VAE (Beta-VAE + Sorted Coordinates)
+To dramatically improve how well the MLP learns the structure, we broke permutation symmetry by sorting particles during dataset generation and used a Beta-VAE loss weighting. The distributions align much better!
+![Improved Demo Plot](demo_plot_improved.png)
 
 ## How to run:
 ```bash
