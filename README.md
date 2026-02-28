@@ -9,8 +9,7 @@ Generates synthetic 3D particle configurations inside a unit cube, trains a simp
 - Visualizes structure and distance distribution
 
 ## Screenshots
-*(Add screenshot 1 here)*
-*(Add screenshot 2 here)*
+![Demo Plot](demo_plot.png)
 
 ## How to run:
 ```bash
