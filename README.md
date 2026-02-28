@@ -7,6 +7,7 @@ Generates synthetic 3D particle configurations inside a unit cube, trains a simp
 - Trains a small VAE
 - Samples new structures from the latent space
 - Visualizes structure and distance distribution
+- Includes an interactive [Jupyter Notebook](explore.ipynb) connected to the project's venv for exploration
 
 ## Screenshots
 ![Demo Plot](demo_plot.png)
